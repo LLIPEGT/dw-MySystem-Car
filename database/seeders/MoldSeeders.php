@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Mold;
 use Illuminate\Database\Seeder;
 
 class MoldSeeders extends Seeder
@@ -13,6 +14,9 @@ class MoldSeeders extends Seeder
      */
     public function run()
     {
-        //
+        Mold::create([
+            'name' => 'CIVIC',
+            'brand_id' => 5
+        ]);
     }
 }

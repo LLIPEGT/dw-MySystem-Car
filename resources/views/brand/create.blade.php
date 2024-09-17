@@ -10,10 +10,10 @@
                         <form action="{{ route('brand.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="color-name" class="col-form-label">Preencha com:</label>
+                                <label for="brand-name" class="col-form-label">Preencha com:</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-palette">Nome</i></span>
-                                    <input type="text" name="name" class="form-control" id="color-name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="text" name="name" class="form-control" id="brand-name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success btn-block">Salvar</button>

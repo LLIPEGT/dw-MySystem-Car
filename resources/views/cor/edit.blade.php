@@ -6,7 +6,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <legend class="text-center">CRIAÇÃO DE COR</legend>
+                        <legend class="text-center">EDIÇÃO DE COR</legend>
                         <form action="{{ route('color.update', $color->id) }}" method="POST">
                             @csrf
                             @method('PUT')

@@ -108,9 +108,9 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        $color = Color::destroy($id);
+        $color = Color::find($id);
 
-        if(isset($color)) return redirect()->route('color.index');
+        if($color->delete()) return redirect()->route('color.index');
 
         return "ERRO";
     }

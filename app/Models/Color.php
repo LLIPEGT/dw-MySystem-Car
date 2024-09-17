@@ -11,4 +11,9 @@ class Color extends Model
     use HasFactory;
 
     use SoftDeletes;
+
+    public function car()
+    {
+        return $this->hasMany('App\Models\Car');
+    }
 }

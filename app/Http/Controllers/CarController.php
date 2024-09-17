@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
+use App\Models\Car;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data = Brand::all();
+        $data = Car::with('mold', 'color', 'state')->get();
 
-        return view('brand.index', compact(['data']));
+        return view('car.index', compact('data'));
     }
 
     /**
@@ -26,7 +26,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('brand.create');
+        //
     }
 
     /**
@@ -37,15 +37,7 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        $brand = new Brand();
-
-        if(isset($brand)){
-            $brand->name = $request->name;
-            $brand->save();
-
-            return redirect()->route('brand.index');
-        }
-        return 'ERROR';
+        //
     }
 
     /**
@@ -56,11 +48,7 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        $brand = Brand::find($id);
-
-        if(isset($brand)) return view("brand.show", compact(['brand']));
-
-        return 'ERRO';
+        //
     }
 
     /**
@@ -71,11 +59,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brand = Brand::find($id);
-
-        if(isset($brand)) return view("brand.edit", compact(['brand']));
-
-        return 'ERRO';
+        //
     }
 
     /**
@@ -87,16 +71,7 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $brand = Brand::find($id);
-
-        if(isset($brand)){
-            $brand->name = $request->name;
-            $brand->save();
-
-            return redirect()->route('brand.index');
-        }
-
-        return "ERRO";
+        //
     }
 
     /**
@@ -107,10 +82,6 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $brand = Brand::find($id);
-
-        if($brand->delete()) return redirect()->route('brand.index');
-
-        return "ERRO";
+        //
     }
 }

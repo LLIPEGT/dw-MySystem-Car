@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ColorSeeders::class,
             BrandSeeders::class,
             StateSeeders::class,
+            MoldSeeders::class
         ]);
     }
 }

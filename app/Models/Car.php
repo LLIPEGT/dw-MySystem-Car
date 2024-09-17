@@ -11,4 +11,19 @@ class Car extends Model
     use HasFactory;
 
     use SoftDeletes;
+
+    public function color()
+    {
+        return $this->belongsTo('App\Models\Color');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo('App\Models\State');
+    }
+
+    public function mold()
+    {
+        return $this->belongsTo('App\Models\Mold');
+    }
 }

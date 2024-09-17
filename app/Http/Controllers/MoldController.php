@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Mold;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class MoldController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data = Brand::all();
+        $data = Mold::with('Brand')->get();
 
-        return view('brand.index', compact(['data']));
+        return view('mold.index', compact('data'));
     }
 
     /**
@@ -26,7 +27,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('brand.create');
+        $brand = Brand::all();
+        return view('mold.create', compact('brand'));
     }
 
     /**
@@ -37,15 +39,17 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        $brand = new Brand();
+        $mold = new Mold();
 
-        if(isset($brand)){
-            $brand->name = $request->name;
-            $brand->save();
+        if(isset($mold)){
+            $mold->name = $request->name;
+            $mold->brand_id = $request->brand_id;
+            $mold->save();
 
-            return redirect()->route('brand.index');
+            return redirect()->route('mold.index');
         }
-        return 'ERROR';
+
+        return 'ERRO';
     }
 
     /**
@@ -56,11 +60,9 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        $brand = Brand::find($id);
+        $mold = Mold::find($id);
 
-        if(isset($brand)) return view("brand.show", compact(['brand']));
-
-        return 'ERRO';
+        if(isset($mold)) return view('mold.show', compact('mold'));
     }
 
     /**
@@ -71,11 +73,12 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brand = Brand::find($id);
+        $mold = Mold::find($id);
+        $brand = Brand::all();
 
-        if(isset($brand)) return view("brand.edit", compact(['brand']));
+        if(isset($mold)) return view('mold.edit', compact('mold', 'brand'));
 
-        return 'ERRO';
+        return "ERRO";
     }
 
     /**
@@ -87,13 +90,14 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $brand = Brand::find($id);
+        $mold = Mold::find($id);
 
-        if(isset($brand)){
-            $brand->name = $request->name;
-            $brand->save();
+        if (isset($mold)) {
+            $mold->name = $request->name;
+            $mold->brand_id = $request->brand_id;
+            $mold->save();
 
-            return redirect()->route('brand.index');
+            return redirect()->route('mold.index');
         }
 
         return "ERRO";
@@ -107,10 +111,11 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $brand = Brand::find($id);
+        $mold = Mold::find($id);
 
-        if($brand->delete()) return redirect()->route('brand.index');
+        if($mold->delete()) return redirect()->route('mold.index');
 
         return "ERRO";
+
     }
 }
