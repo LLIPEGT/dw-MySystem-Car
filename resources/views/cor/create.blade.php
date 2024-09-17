@@ -9,13 +9,8 @@
                         <legend class="text-center">CRIAÇÃO DE COR</legend>
                         <form action="{{ route('color.store') }}" method="POST">
                             @csrf
-                            <div class="form-group">
-                                <label for="color-name" class="col-form-label">Preencha com:</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-palette">Nome</i></span>
-                                    <input type="text" name="name" class="form-control" id="color-name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
+                            <label for="color-name" class="col-form-label">Preencha com:</label>
+                            <x-input label="Nome" name="name"/>
                             <button type="submit" class="btn btn-success btn-block">Salvar</button>
                             <a href="{{ route('color.index') }}" class="btn btn-secondary btn-block">Voltar</a>
                         </form>

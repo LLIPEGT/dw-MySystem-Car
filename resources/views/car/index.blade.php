@@ -29,7 +29,7 @@
                         <td>{{ $item->plate }}</td>
                         <td>{{ $item->color->name }}</td>
                         <td>{{ $item->mold->name }}</td>
-                        <td>{{ $item->state->name }}</td>
+                        <td>{{ $item->state->abbreviation }}</td>
 
                         <td class="text-center">
                             <a href="{{ route('car.show', $item->id) }}" class="btn btn-info">
@@ -58,4 +58,5 @@
             </tbody>
         </table>
     </div>
+
 @endsection
